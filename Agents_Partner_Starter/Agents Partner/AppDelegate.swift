@@ -40,21 +40,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     UITextField.appearance().tintColor = rayGreen
     UITextView.appearance().tintColor = rayGreen
       
+//      let config = Realm.Configuration(
+//                  schemaVersion: 2, // 새로운 스키마 버전 설정
+//                  migrationBlock: { migration, oldSchemaVersion in
+//                      if oldSchemaVersion < 2 {
+//                          // 1-1. 마이그레이션 수행(버전 2보다 작은 경우 버전 2에 맞게 데이터베이스 수정)
+//                          migration.enumerateObjects(ofType: Specimen.className()) { oldObject, newObject in
+//                              newObject!["longitude"] = 0.0
+//                          }
+//                      }
+//                  }
+//              )
+//
+//              // 2. Realm이 새로운 Object를 쓸 수 있도록 설정
+//              Realm.Configuration.defaultConfiguration = config
+      
+      let schemaVersion = UInt64(20000)
+       
       let config = Realm.Configuration(
-                  schemaVersion: 2, // 새로운 스키마 버전 설정
-                  migrationBlock: { migration, oldSchemaVersion in
-                      if oldSchemaVersion < 2 {
-                          // 1-1. 마이그레이션 수행(버전 2보다 작은 경우 버전 2에 맞게 데이터베이스 수정)
-                          migration.enumerateObjects(ofType: Specimen.className()) { oldObject, newObject in
-                              newObject!["longitude"] = 0.0
-                          }
-                      }
-                  }
-              )
-              
-              // 2. Realm이 새로운 Object를 쓸 수 있도록 설정
-              Realm.Configuration.defaultConfiguration = config
-    
+          //  Change schema version value if want generate new migration
+          schemaVersion: schemaVersion,
+          migrationBlock: { migration, oldSchemaVersion in
+              if oldSchemaVersion < (schemaVersion - UInt64(1)) {
+                  // Nothing to do!
+                  // Realm will automatically detect new properties and removed properties
+                  // And will update the schema on disk automatically
+              }
+          }
+      )
+      Realm.Configuration.defaultConfiguration = config
+
     return true
   }
 }

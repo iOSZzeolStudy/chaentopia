@@ -60,6 +60,40 @@ class AddNewEntryViewController: UIViewController {
   //
   // MARK: - Private Methods
   //
+    
+    func addNewSpecimen() {
+        let realm = try! Realm()
+        
+        try! realm.write {
+            let newSpecimen = Specimen()
+            
+            newSpecimen.name = nameTextField.text!
+            newSpecimen.category = selectedCategory
+            newSpecimen.specimenDescription = descriptionTextField.text
+            newSpecimen.latitude = selectedAnnotation.coordinate.latitude
+            newSpecimen.longitude = selectedAnnotation.coordinate.longitude
+            
+            realm.add(newSpecimen)
+            specimen = newSpecimen
+        }
+    }
+    func fillTextFields() {
+        nameTextField.text = specimen.name
+        categoryTextField.text = specimen.category.name
+        descriptionTextField.text = specimen.specimenDescription
+        
+        selectedCategory = specimen.category
+    }
+    func updateSpecimen() {
+        let realm = try! Realm()
+        
+        try! realm.write {
+            specimen.name = nameTextField.text!
+            specimen.category = selectedCategory
+            specimen.specimenDescription = descriptionTextField.text
+        }
+    }
+    
   func validateFields() -> Bool {
     if nameTextField.text!.isEmpty || descriptionTextField.text!.isEmpty || selectedCategory == nil {
       let alertController = UIAlertController(title: "Validation Error",
@@ -80,22 +114,7 @@ class AddNewEntryViewController: UIViewController {
     }
   }
     
-    func addNewSpecimen() {
-        let realm = try! Realm()
-        
-        try! realm.write {
-            let newSpecimen = Specimen()
-            
-            newSpecimen.name = nameTextField.text!
-            newSpecimen.category = selectedCategory
-            newSpecimen.specimenDescription = descriptionTextField.text
-            newSpecimen.latitude = selectedAnnotation.coordinate.latitude
-            newSpecimen.longitude = selectedAnnotation.coordinate.longitude
-            
-            realm.add(newSpecimen)
-            specimen = newSpecimen
-        }
-    }
+    
   
   //
   // MARK: - View Controller
@@ -103,8 +122,12 @@ class AddNewEntryViewController: UIViewController {
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if validateFields() {
+            if specimen != nil {
+                updateSpecimen()
+            } else {
+                addNewSpecimen()
+            }
             
-            addNewSpecimen()
             return true
         } else {
             return false
@@ -113,6 +136,12 @@ class AddNewEntryViewController: UIViewController {
     
   override func viewDidLoad() {
     super.viewDidLoad()
+      if let specimen = specimen {
+          title = "Edit \(specimen.name)"
+          fillTextFields()
+      } else {
+          title = "Add New Specimen"
+      }
   }
 }
 

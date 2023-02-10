@@ -46,14 +46,16 @@ class MapViewController: UIViewController {
   //
   // MARK: - Constants
   //
-  let kDistanceMeters: CLLocationDistance = 500
-  
+let kDistanceMeters: CLLocationDistance = 500
   //
   // MARK: - Variables And Properties
   //
-  var lastAnnotation: MKAnnotation!
-  var locationManager = CLLocationManager()
-  var userLocated = false
+
+    var lastAnnotation: MKAnnotation!
+    var locationManager = CLLocationManager()
+    var specimens = try! Realm().objects(Specimen.self)
+    var userLocated = false
+    
   
   //
   // MARK: - IBActions
@@ -66,17 +68,50 @@ class MapViewController: UIViewController {
     centerToUsersLocation()
   }
   
-  @IBAction func unwindFromAddNewEntry(segue: UIStoryboardSegue) {
-    if let lastAnnotation = lastAnnotation {
-      mapView.removeAnnotation(lastAnnotation)
+    @IBAction func unwindFromAddNewEntry(segue: UIStoryboardSegue) {
+      let addNewEntryController = segue.source as! AddNewEntryViewController
+      let addedSpecimen = addNewEntryController.specimen!
+      let addedSpecimenCoordinate = CLLocationCoordinate2D(latitude: addedSpecimen.latitude, longitude: addedSpecimen.longitude)
+      
+      if let lastAnnotation = lastAnnotation {
+        mapView.removeAnnotation(lastAnnotation)
+      } else {
+        for annotation in mapView.annotations {
+          if let currentAnnotation = annotation as? SpecimenAnnotation {
+            if currentAnnotation.coordinate.latitude == addedSpecimenCoordinate.latitude && currentAnnotation.coordinate.longitude == addedSpecimenCoordinate.longitude {
+              mapView.removeAnnotation(currentAnnotation)
+              
+              break
+            }
+          }
+        }
+      }
+      
+      let annotation = SpecimenAnnotation(coordinate: addedSpecimenCoordinate, title: addedSpecimen.name, subtitle: addedSpecimen.category.name, specimen: addedSpecimen)
+      
+      mapView.addAnnotation(annotation)
+      lastAnnotation = nil;
     }
-    
-    lastAnnotation = nil
-  }
   
   //
   // MARK: - Private Methods
   //
+    
+    func populateMap() {
+      mapView.removeAnnotations(mapView.annotations) // 1
+      
+      specimens = try! Realm().objects(Specimen.self) // 2
+      
+      // Create annotations for each one
+      for specimen in specimens { // 3
+        let coord = CLLocationCoordinate2D(latitude: specimen.latitude, longitude: specimen.longitude);
+        let specimenAnnotation = SpecimenAnnotation(coordinate: coord,
+                                                    title: specimen.name,
+                                                    subtitle: specimen.category.name,
+                                                    specimen: specimen)
+        mapView.addAnnotation(specimenAnnotation) // 4
+      }
+    }
   func addNewPin() {
     if lastAnnotation != nil {
       let alertController = UIAlertController(title: "Annotation already dropped",
@@ -111,6 +146,7 @@ class MapViewController: UIViewController {
   //
   override func viewDidLoad() {
     super.viewDidLoad()
+      populateMap()
       
       print(Realm.Configuration.defaultConfiguration.fileURL!)
     
