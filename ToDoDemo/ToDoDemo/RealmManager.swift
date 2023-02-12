@@ -15,6 +15,7 @@ class RealmManager: ObservableObject {
     init() {
         openRealm()
         getTasks()
+        print(Realm.Configuration.defaultConfiguration.fileURL!)
     }
     
     func openRealm() {
