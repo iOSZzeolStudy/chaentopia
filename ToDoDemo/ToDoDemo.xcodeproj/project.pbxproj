@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C3372502299F4D5A001BEEB1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3372501299F4D5A001BEEB1 /* ContentView.swift */; };
 		C38025342997485100FBB7A2 /* ToDoDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38025332997485100FBB7A2 /* ToDoDemoApp.swift */; };
 		C38025382997485200FBB7A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C38025372997485200FBB7A2 /* Assets.xcassets */; };
 		C380253B2997485200FBB7A2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C380253A2997485200FBB7A2 /* Preview Assets.xcassets */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C3372501299F4D5A001BEEB1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C38025302997485100FBB7A2 /* ToDoDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C38025332997485100FBB7A2 /* ToDoDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoDemoApp.swift; sourceTree = "<group>"; };
 		C38025372997485200FBB7A2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 		C38025432997494000FBB7A2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C3372501299F4D5A001BEEB1 /* ContentView.swift */,
 				C38025412997493300FBB7A2 /* TasksView.swift */,
 				C380254729974E6700FBB7A2 /* AddTaskView.swift */,
 			);
@@ -185,6 +188,7 @@
 				C380254A29974FD200FBB7A2 /* SmallAddButton.swift in Sources */,
 				C38025342997485100FBB7A2 /* ToDoDemoApp.swift in Sources */,
 				C38025512997535900FBB7A2 /* RealmManager.swift in Sources */,
+				C3372502299F4D5A001BEEB1 /* ContentView.swift in Sources */,
 				C380254629974A5B00FBB7A2 /* TaskRow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

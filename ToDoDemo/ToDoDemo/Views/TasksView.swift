@@ -71,6 +71,9 @@ struct TasksView: View {
                                 }
                         }
                     }
+//                    .onMove { from, to in
+//                        realmManager.tasks.move(fromOffsets: from, toOffset: to)
+//                                }
                     .onDelete { indexSet in
                         indexSet.forEach { index in
                             let taskTodelete = realmManager.tasks[index]
@@ -85,6 +88,7 @@ struct TasksView: View {
             Spacer()
         }
     }
+
 }
 
 
