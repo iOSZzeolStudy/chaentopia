@@ -13,7 +13,11 @@ struct MainListView: View {
     var body: some View {
         NavigationView {
             List(store.list) { memo in
-                MemoCell(memo: memo)
+                NavigationLink{
+                    DetailView(memo: memo)
+                } label: {
+                    MemoCell(memo: memo)
+                }
             }
             .navigationTitle("메모")
             .toolbar(content: {
