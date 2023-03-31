@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C309F85229D6F84B007BAF98 /* MemoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C309F85129D6F84B007BAF98 /* MemoCell.swift */; };
 		C376060A29D6C3D90051BA18 /* SwiftUIMemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C376060929D6C3D90051BA18 /* SwiftUIMemoApp.swift */; };
 		C376060E29D6C3DB0051BA18 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C376060D29D6C3DB0051BA18 /* Assets.xcassets */; };
 		C376061129D6C3DB0051BA18 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C376061029D6C3DB0051BA18 /* Preview Assets.xcassets */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C309F85129D6F84B007BAF98 /* MemoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoCell.swift; sourceTree = "<group>"; };
 		C376060629D6C3D90051BA18 /* SwiftUIMemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIMemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C376060929D6C3D90051BA18 /* SwiftUIMemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIMemoApp.swift; sourceTree = "<group>"; };
 		C376060D29D6C3DB0051BA18 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -40,6 +42,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C309F85029D6F83E007BAF98 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C309F85129D6F84B007BAF98 /* MemoCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		C37605FD29D6C3D90051BA18 = {
 			isa = PBXGroup;
 			children = (
@@ -59,6 +69,7 @@
 		C376060829D6C3D90051BA18 /* SwiftUIMemo */ = {
 			isa = PBXGroup;
 			children = (
+				C309F85029D6F83E007BAF98 /* View */,
 				C376061F29D6C42E0051BA18 /* Memory */,
 				C376061E29D6C4280051BA18 /* CoreData */,
 				C376060929D6C3D90051BA18 /* SwiftUIMemoApp.swift */,
@@ -165,6 +176,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C309F85229D6F84B007BAF98 /* MemoCell.swift in Sources */,
 				C376061329D6C3DB0051BA18 /* Persistence.swift in Sources */,
 				C376062329D6C5010051BA18 /* MemoStore.swift in Sources */,
 				C376061D29D6C3FC0051BA18 /* MainListView.swift in Sources */,
