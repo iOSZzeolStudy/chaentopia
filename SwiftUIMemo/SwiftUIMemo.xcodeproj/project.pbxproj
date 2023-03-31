@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C309F85229D6F84B007BAF98 /* MemoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C309F85129D6F84B007BAF98 /* MemoCell.swift */; };
+		C309F85429D6F907007BAF98 /* ComposeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C309F85329D6F907007BAF98 /* ComposeView.swift */; };
 		C376060A29D6C3D90051BA18 /* SwiftUIMemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C376060929D6C3D90051BA18 /* SwiftUIMemoApp.swift */; };
 		C376060E29D6C3DB0051BA18 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C376060D29D6C3DB0051BA18 /* Assets.xcassets */; };
 		C376061129D6C3DB0051BA18 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C376061029D6C3DB0051BA18 /* Preview Assets.xcassets */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		C309F85129D6F84B007BAF98 /* MemoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoCell.swift; sourceTree = "<group>"; };
+		C309F85329D6F907007BAF98 /* ComposeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeView.swift; sourceTree = "<group>"; };
 		C376060629D6C3D90051BA18 /* SwiftUIMemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIMemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C376060929D6C3D90051BA18 /* SwiftUIMemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIMemoApp.swift; sourceTree = "<group>"; };
 		C376060D29D6C3DB0051BA18 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -46,6 +48,8 @@
 			isa = PBXGroup;
 			children = (
 				C309F85129D6F84B007BAF98 /* MemoCell.swift */,
+				C376061C29D6C3FC0051BA18 /* MainListView.swift */,
+				C309F85329D6F907007BAF98 /* ComposeView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -73,7 +77,6 @@
 				C376061F29D6C42E0051BA18 /* Memory */,
 				C376061E29D6C4280051BA18 /* CoreData */,
 				C376060929D6C3D90051BA18 /* SwiftUIMemoApp.swift */,
-				C376061C29D6C3FC0051BA18 /* MainListView.swift */,
 				C376060D29D6C3DB0051BA18 /* Assets.xcassets */,
 				C376060F29D6C3DB0051BA18 /* Preview Content */,
 			);
@@ -181,6 +184,7 @@
 				C376062329D6C5010051BA18 /* MemoStore.swift in Sources */,
 				C376061D29D6C3FC0051BA18 /* MainListView.swift in Sources */,
 				C376061629D6C3DB0051BA18 /* SwiftUIMemo.xcdatamodeld in Sources */,
+				C309F85429D6F907007BAF98 /* ComposeView.swift in Sources */,
 				C376060A29D6C3D90051BA18 /* SwiftUIMemoApp.swift in Sources */,
 				C376062129D6C45B0051BA18 /* Memo.swift in Sources */,
 			);
