@@ -22,6 +22,7 @@ struct ContentView: View {
                 .textFieldStyle(.roundedBorder)
                 .padding(5)
             Spacer()
+            
             Group {
                 Text("어제")
                     .font(.title2).bold()
@@ -34,6 +35,7 @@ struct ContentView: View {
                 .cornerRadius(10)
                 Spacer()
             }
+            
             Group {
                 Text("이전 7일")
                     .font(.title2).bold()
@@ -42,7 +44,6 @@ struct ContentView: View {
                     MemoView()
                     MemoView()
                     MemoView()
-//                    MemoView()
                 }
                 .cornerRadius(10)
                 Spacer()
