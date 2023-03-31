@@ -11,6 +11,7 @@ struct DetailView: View {
     @ObservedObject var memo: Memo
     
     @EnvironmentObject var store: MemoStore
+    @State private var showComposer = false
     var body: some View {
         VStack{
             ScrollView {
@@ -32,13 +33,32 @@ struct DetailView: View {
         }
 //        .navigationTitle("메모 보기")
 //        .navigationBarTitleDisplayMode(.inline)
+        
+        .toolbar(content: {
+            ToolbarItem(placement: .bottomBar) {
+                Spacer()
+            }
+            ToolbarItem(placement: .bottomBar) {
+                Button {
+                    showComposer = true
+                } label: {
+                    Text("편집")
+                        .foregroundColor(.yellow)
+                }
+            }
+        })
+        .sheet(isPresented: $showComposer) {
+            ComposeView(memo: memo)
+        }
     }
 }
 
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailView(memo: Memo(content: "Hello"))
-            .environmentObject(MemoStore())
+        NavigationView{
+            DetailView(memo: Memo(content: "Hello"))
+                .environmentObject(MemoStore())
+        }
     }
 }
