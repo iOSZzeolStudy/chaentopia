@@ -9,12 +9,29 @@ import SwiftUI
 
 struct MainListView: View {
     @EnvironmentObject var store : MemoStore
+    @State private var showComposer: Bool = false
     var body: some View {
         NavigationView {
             List(store.list) { memo in
                 MemoCell(memo: memo)
             }
             .navigationTitle("메모")
+            .toolbar(content: {
+                ToolbarItem(placement: .bottomBar) {
+                    Spacer()
+                }
+                ToolbarItem(placement: .bottomBar) {
+                    Button {
+                        showComposer = true
+                    } label: {
+                        Image(systemName: "square.and.pencil")
+                            .foregroundColor(.yellow)
+                    }
+                }
+            })
+            .sheet(isPresented: $showComposer) {
+                ComposeView()
+            }
         }
     }
 }
