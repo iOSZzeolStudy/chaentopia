@@ -12,12 +12,15 @@ struct MainListView: View {
     @State private var showComposer: Bool = false
     var body: some View {
         NavigationView {
-            List(store.list) { memo in
-                NavigationLink{
-                    DetailView(memo: memo)
-                } label: {
-                    MemoCell(memo: memo)
+            List {
+                ForEach(store.list) { memo in
+                    NavigationLink{
+                        DetailView(memo: memo)
+                    } label: {
+                        MemoCell(memo: memo)
+                    }
                 }
+                .onDelete(perform: store.delete)
             }
             .navigationTitle("메모")
             .toolbar(content: {
@@ -35,7 +38,7 @@ struct MainListView: View {
             })
             .sheet(isPresented: $showComposer) {
                 ComposeView()
-            }
+        }
         }
     }
 }
